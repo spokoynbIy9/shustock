@@ -8,9 +8,11 @@ import { Good } from "@/types";
 
 export const useCart = () => {
     const dispatch = useAppDispatch();
-    const { getGoods } = cartSelectors;
+    const { getGoods, getTotal, getTotalCount } = cartSelectors;
 
     const goods = useAppSelector(getGoods);
+    const total = useAppSelector(getTotal);
+    const totalCount = useAppSelector(getTotalCount);
 
     const addGood = useCallback(
         (good: Omit<Good, "id">) => {
@@ -33,6 +35,8 @@ export const useCart = () => {
 
     return {
         goods,
+        total,
+        totalCount,
 
         addGood,
         deleteGood,
