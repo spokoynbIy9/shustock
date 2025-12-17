@@ -18,6 +18,10 @@ export const filtersSlice = createSlice({
     name: "filters",
     initialState,
     reducers: {
+        setSearch: (state, action: PayloadAction<string>) => {
+            state.search = action.payload;
+        },
+
         toggleCategory: (state, action: PayloadAction<Category>) => {
             const index = state.selectedCategories.indexOf(action.payload);
             if (index > -1) {
@@ -42,6 +46,7 @@ export const filtersSlice = createSlice({
         },
     },
     selectors: {
+        getSearch: (state) => state.search,
         getSelectedCategories: (state) => state.selectedCategories,
         getSelectedOrientations: (state) => state.selectedOrientations,
     },
